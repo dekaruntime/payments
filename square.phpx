@@ -55,6 +55,11 @@ const SQUARE_API_VERSION = '2024-06-04'
 // Public surface
 // ---------------------------------------------------------------------------
 
+/// docid: phpx/payments/square_name()
+/// <Function name="square_name">
+///   <Description>PHPX standard module function `square_name` from `payments`.</Description>
+///   <ReturnType type="mixed" typeLink="/docs/php/types/mixed" />
+/// </Function>
 export function square_name() {
   return 'square'
 }

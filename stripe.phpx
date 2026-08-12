@@ -63,6 +63,11 @@ const STRIPE_API_BASE = 'https://api.stripe.com/v1'
 // Public surface
 // ---------------------------------------------------------------------------
 
+/// docid: phpx/payments/stripe_name()
+/// <Function name="stripe_name">
+///   <Description>PHPX standard module function `stripe_name` from `payments`.</Description>
+///   <ReturnType type="mixed" typeLink="/docs/php/types/mixed" />
+/// </Function>
 export function stripe_name() {
   return 'stripe'
 }

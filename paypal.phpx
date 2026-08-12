@@ -10,6 +10,11 @@ import { result_err } from 'core/result'
 //
 // Every method returns Err('not_implemented').
 
+/// docid: phpx/payments/paypal_name()
+/// <Function name="paypal_name">
+///   <Description>PHPX standard module function `paypal_name` from `payments`.</Description>
+///   <ReturnType type="mixed" typeLink="/docs/php/types/mixed" />
+/// </Function>
 export function paypal_name() {
   return 'paypal'
 }

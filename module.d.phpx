@@ -42,57 +42,729 @@ type AccountStatus = {
 }
 
 // Fee math.
+
+/// docid: phpx/payments/platform_fee_cents()
+/// <Function name="platform_fee_cents">
+///   <Description>PHPX standard module function `platform_fee_cents` from `payments`.</Description>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$tier" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $tier.
+///   </Parameter>
+///   <ReturnType type="int" typeLink="/docs/php/types/int" />
+/// </Function>
 export function platform_fee_cents($amount_cents: int, $tier: string): int
 
 // Struct constructors.
+
+/// docid: phpx/payments/new_connected_account()
+/// <Function name="new_connected_account">
+///   <Description>PHPX standard module function `new_connected_account` from `payments`.</Description>
+///   <Parameter name="$provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $provider.
+///   </Parameter>
+///   <Parameter name="$account_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $account_id.
+///   </Parameter>
+///   <Parameter name="$charges_enabled" type="bool" required="true" typeLink="/docs/php/types/bool">
+///     Parameter $charges_enabled.
+///   </Parameter>
+///   <Parameter name="$onboarded_at" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $onboarded_at.
+///   </Parameter>
+///   <Parameter name="$metadata" type="mixed" required="false" typeLink="/docs/php/types/mixed">
+///     Parameter $metadata.
+///   </Parameter>
+///   <ReturnType type="ConnectedAccount" />
+/// </Function>
 export function new_connected_account($provider: string, $account_id: string, $charges_enabled: bool, $onboarded_at: int, $metadata: mixed = []): ConnectedAccount
+
+/// docid: phpx/payments/new_charge()
+/// <Function name="new_charge">
+///   <Description>PHPX standard module function `new_charge` from `payments`.</Description>
+///   <Parameter name="$id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $id.
+///   </Parameter>
+///   <Parameter name="$provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $provider.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$currency" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $currency.
+///   </Parameter>
+///   <Parameter name="$platform_fee_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $platform_fee_cents.
+///   </Parameter>
+///   <Parameter name="$status" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $status.
+///   </Parameter>
+///   <ReturnType type="Charge" />
+/// </Function>
 export function new_charge($id: string, $provider: string, $amount_cents: int, $currency: string, $platform_fee_cents: int, $status: string): Charge
+
+/// docid: phpx/payments/new_refund()
+/// <Function name="new_refund">
+///   <Description>PHPX standard module function `new_refund` from `payments`.</Description>
+///   <Parameter name="$id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $id.
+///   </Parameter>
+///   <Parameter name="$provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $provider.
+///   </Parameter>
+///   <Parameter name="$charge_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $charge_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$status" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $status.
+///   </Parameter>
+///   <ReturnType type="Refund" />
+/// </Function>
 export function new_refund($id: string, $provider: string, $charge_id: string, $amount_cents: int, $status: string): Refund
+
+/// docid: phpx/payments/new_event()
+/// <Function name="new_event">
+///   <Description>PHPX standard module function `new_event` from `payments`.</Description>
+///   <Parameter name="$id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $id.
+///   </Parameter>
+///   <Parameter name="$provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $provider.
+///   </Parameter>
+///   <Parameter name="$type" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $type.
+///   </Parameter>
+///   <Parameter name="$created_at" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $created_at.
+///   </Parameter>
+///   <Parameter name="$data" type="mixed" required="false" typeLink="/docs/php/types/mixed">
+///     Parameter $data.
+///   </Parameter>
+///   <ReturnType type="Event" />
+/// </Function>
 export function new_event($id: string, $provider: string, $type: string, $created_at: int, $data: mixed = []): Event
+
+/// docid: phpx/payments/new_account_status()
+/// <Function name="new_account_status">
+///   <Description>PHPX standard module function `new_account_status` from `payments`.</Description>
+///   <Parameter name="$provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $provider.
+///   </Parameter>
+///   <Parameter name="$account_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $account_id.
+///   </Parameter>
+///   <Parameter name="$charges_enabled" type="bool" required="true" typeLink="/docs/php/types/bool">
+///     Parameter $charges_enabled.
+///   </Parameter>
+///   <Parameter name="$disabled_reason" type="string" required="false" typeLink="/docs/php/types/string">
+///     Parameter $disabled_reason.
+///   </Parameter>
+///   <Parameter name="$requirements_due" type="mixed" required="false" typeLink="/docs/php/types/mixed">
+///     Parameter $requirements_due.
+///   </Parameter>
+///   <ReturnType type="AccountStatus" />
+/// </Function>
 export function new_account_status($provider: string, $account_id: string, $charges_enabled: bool, $disabled_reason: string = '', $requirements_due: mixed = []): AccountStatus
 
 // Webhook HMAC verify.
+
+/// docid: phpx/payments/verify_hmac_sha256()
+/// <Function name="verify_hmac_sha256">
+///   <Description>PHPX standard module function `verify_hmac_sha256` from `payments`.</Description>
+///   <Parameter name="$body" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $body.
+///   </Parameter>
+///   <Parameter name="$signature_hex" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $signature_hex.
+///   </Parameter>
+///   <Parameter name="$secret" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $secret.
+///   </Parameter>
+///   <ReturnType type="Result<bool, string>" />
+/// </Function>
 export function verify_hmac_sha256($body: string, $signature_hex: string, $secret: string): Result<bool, string>
 
 // Shared security helpers (issues #118, #120, #123).
+
+/// docid: phpx/payments/oauth_state_issue()
+/// <Function name="oauth_state_issue">
+///   <Description>PHPX standard module function `oauth_state_issue` from `payments`.</Description>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $provider.
+///   </Parameter>
+///   <Parameter name="$session_jti" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $session_jti.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function oauth_state_issue($shop_id: string, $provider: string, $session_jti: string): Result<string, string>
+
+/// docid: phpx/payments/oauth_state_consume()
+/// <Function name="oauth_state_consume">
+///   <Description>PHPX standard module function `oauth_state_consume` from `payments`.</Description>
+///   <Parameter name="$state" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $state.
+///   </Parameter>
+///   <Parameter name="$expected_shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_shop_id.
+///   </Parameter>
+///   <Parameter name="$expected_provider" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_provider.
+///   </Parameter>
+///   <Parameter name="$expected_jti" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_jti.
+///   </Parameter>
+///   <ReturnType type="Result<mixed, string>" />
+/// </Function>
 export function oauth_state_consume($state: string, $expected_shop_id: string, $expected_provider: string, $expected_jti: string): Result<mixed, string>
+
+/// docid: phpx/payments/validate_return_url()
+/// <Function name="validate_return_url">
+///   <Description>PHPX standard module function `validate_return_url` from `payments`.</Description>
+///   <Parameter name="$return_url" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $return_url.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function validate_return_url($return_url: string): Result<string, string>
+
+/// docid: phpx/payments/authorize_refund()
+/// <Function name="authorize_refund">
+///   <Description>PHPX standard module function `authorize_refund` from `payments`.</Description>
+///   <Parameter name="$actor" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $actor.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$charge_amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $charge_amount_cents.
+///   </Parameter>
+///   <ReturnType type="Result<bool, string>" />
+/// </Function>
 export function authorize_refund($actor: mixed, $shop_id: string, $amount_cents: int, $charge_amount_cents: int): Result<bool, string>
+
+/// docid: phpx/payments/require_refund_reason()
+/// <Function name="require_refund_reason">
+///   <Description>PHPX standard module function `require_refund_reason` from `payments`.</Description>
+///   <Parameter name="$reason" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $reason.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function require_refund_reason($reason: string): Result<string, string>
+
+/// docid: phpx/payments/log_refund_attempt()
+/// <Function name="log_refund_attempt">
+///   <Description>PHPX standard module function `log_refund_attempt` from `payments`.</Description>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$actor" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $actor.
+///   </Parameter>
+///   <Parameter name="$charge_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $charge_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$reason" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $reason.
+///   </Parameter>
+///   <Parameter name="$outcome" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $outcome.
+///   </Parameter>
+///   <Parameter name="$error_msg" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $error_msg.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function log_refund_attempt($shop_id: string, $actor: mixed, $charge_id: string, $amount_cents: int, $reason: string, $outcome: string, $error_msg: string): Result<string, string>
 
 // Stripe provider (issue #94).
+
+/// docid: phpx/payments/stripe_name()
+/// <Function name="stripe_name">
+///   <Description>PHPX standard module function `stripe_name` from `payments`.</Description>
+///   <ReturnType type="string" typeLink="/docs/php/types/string" />
+/// </Function>
 export function stripe_name(): string
+
+/// docid: phpx/payments/stripe_connect_url()
+/// <Function name="stripe_connect_url">
+///   <Description>PHPX standard module function `stripe_connect_url` from `payments`.</Description>
+///   <Parameter name="$return_url" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $return_url.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$session_jti" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $session_jti.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<mixed, string>" />
+/// </Function>
 export function stripe_connect_url($return_url: string, $shop_id: string, $session_jti: string, $http: mixed): Result<mixed, string>
+
+/// docid: phpx/payments/stripe_handle_callback()
+/// <Function name="stripe_handle_callback">
+///   <Description>PHPX standard module function `stripe_handle_callback` from `payments`.</Description>
+///   <Parameter name="$query" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $query.
+///   </Parameter>
+///   <Parameter name="$expected_shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_shop_id.
+///   </Parameter>
+///   <Parameter name="$expected_jti" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_jti.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<ConnectedAccount, string>" />
+/// </Function>
 export function stripe_handle_callback($query: mixed, $expected_shop_id: string, $expected_jti: string, $http: mixed): Result<ConnectedAccount, string>
+
+/// docid: phpx/payments/stripe_create_charge()
+/// <Function name="stripe_create_charge">
+///   <Description>PHPX standard module function `stripe_create_charge` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$currency" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $currency.
+///   </Parameter>
+///   <Parameter name="$platform_fee_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $platform_fee_cents.
+///   </Parameter>
+///   <Parameter name="$idempotency_key" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $idempotency_key.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<Charge, string>" />
+/// </Function>
 export function stripe_create_charge($account: ConnectedAccount, $amount_cents: int, $currency: string, $platform_fee_cents: int, $idempotency_key: string, $http: mixed): Result<Charge, string>
+
+/// docid: phpx/payments/stripe_refund()
+/// <Function name="stripe_refund">
+///   <Description>PHPX standard module function `stripe_refund` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$charge_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $charge_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$actor" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $actor.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$reason" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $reason.
+///   </Parameter>
+///   <Parameter name="$charge_amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $charge_amount_cents.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<Refund, string>" />
+/// </Function>
 export function stripe_refund($account: ConnectedAccount, $charge_id: string, $amount_cents: int, $actor: mixed, $shop_id: string, $reason: string, $charge_amount_cents: int, $http: mixed): Result<Refund, string>
+
+/// docid: phpx/payments/stripe_webhook_verify()
+/// <Function name="stripe_webhook_verify">
+///   <Description>PHPX standard module function `stripe_webhook_verify` from `payments`.</Description>
+///   <Parameter name="$body" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $body.
+///   </Parameter>
+///   <Parameter name="$signature" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $signature.
+///   </Parameter>
+///   <Parameter name="$secret" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $secret.
+///   </Parameter>
+///   <Parameter name="$tolerance_seconds" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $tolerance_seconds.
+///   </Parameter>
+///   <ReturnType type="Result<Event, string>" />
+/// </Function>
 export function stripe_webhook_verify($body: string, $signature: string, $secret: string, $tolerance_seconds: int): Result<Event, string>
+
+/// docid: phpx/payments/stripe_account_status()
+/// <Function name="stripe_account_status">
+///   <Description>PHPX standard module function `stripe_account_status` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<AccountStatus, string>" />
+/// </Function>
 export function stripe_account_status($account: ConnectedAccount, $http: mixed): Result<AccountStatus, string>
+
+/// docid: phpx/payments/stripe_disconnect()
+/// <Function name="stripe_disconnect">
+///   <Description>PHPX standard module function `stripe_disconnect` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<mixed, string>" />
+/// </Function>
 export function stripe_disconnect($account: ConnectedAccount, $http: mixed): Result<mixed, string>
 
 // PayPal provider (stubbed; deferred post-launch).
+
+/// docid: phpx/payments/paypal_name()
+/// <Function name="paypal_name">
+///   <Description>PHPX standard module function `paypal_name` from `payments`.</Description>
+///   <ReturnType type="string" typeLink="/docs/php/types/string" />
+/// </Function>
 export function paypal_name(): string
+
+/// docid: phpx/payments/paypal_connect_url()
+/// <Function name="paypal_connect_url">
+///   <Description>PHPX standard module function `paypal_connect_url` from `payments`.</Description>
+///   <Parameter name="$return_url" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $return_url.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function paypal_connect_url($return_url: string, $shop_id: string): Result<string, string>
+
+/// docid: phpx/payments/paypal_handle_callback()
+/// <Function name="paypal_handle_callback">
+///   <Description>PHPX standard module function `paypal_handle_callback` from `payments`.</Description>
+///   <Parameter name="$query" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $query.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <ReturnType type="Result<ConnectedAccount, string>" />
+/// </Function>
 export function paypal_handle_callback($query: mixed, $shop_id: string): Result<ConnectedAccount, string>
+
+/// docid: phpx/payments/paypal_create_charge()
+/// <Function name="paypal_create_charge">
+///   <Description>PHPX standard module function `paypal_create_charge` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$currency" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $currency.
+///   </Parameter>
+///   <Parameter name="$platform_fee_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $platform_fee_cents.
+///   </Parameter>
+///   <Parameter name="$idempotency_key" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $idempotency_key.
+///   </Parameter>
+///   <ReturnType type="Result<Charge, string>" />
+/// </Function>
 export function paypal_create_charge($account: ConnectedAccount, $amount_cents: int, $currency: string, $platform_fee_cents: int, $idempotency_key: string): Result<Charge, string>
+
+/// docid: phpx/payments/paypal_refund()
+/// <Function name="paypal_refund">
+///   <Description>PHPX standard module function `paypal_refund` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$charge_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $charge_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <ReturnType type="Result<Refund, string>" />
+/// </Function>
 export function paypal_refund($account: ConnectedAccount, $charge_id: string, $amount_cents: int): Result<Refund, string>
+
+/// docid: phpx/payments/paypal_webhook_verify()
+/// <Function name="paypal_webhook_verify">
+///   <Description>PHPX standard module function `paypal_webhook_verify` from `payments`.</Description>
+///   <Parameter name="$body" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $body.
+///   </Parameter>
+///   <Parameter name="$signature" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $signature.
+///   </Parameter>
+///   <Parameter name="$secret" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $secret.
+///   </Parameter>
+///   <ReturnType type="Result<Event, string>" />
+/// </Function>
 export function paypal_webhook_verify($body: string, $signature: string, $secret: string): Result<Event, string>
+
+/// docid: phpx/payments/paypal_account_status()
+/// <Function name="paypal_account_status">
+///   <Description>PHPX standard module function `paypal_account_status` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <ReturnType type="Result<AccountStatus, string>" />
+/// </Function>
 export function paypal_account_status($account: ConnectedAccount): Result<AccountStatus, string>
 
 // Square provider (issue #96).
+
+/// docid: phpx/payments/square_name()
+/// <Function name="square_name">
+///   <Description>PHPX standard module function `square_name` from `payments`.</Description>
+///   <ReturnType type="string" typeLink="/docs/php/types/string" />
+/// </Function>
 export function square_name(): string
+
+/// docid: phpx/payments/square_connect_url()
+/// <Function name="square_connect_url">
+///   <Description>PHPX standard module function `square_connect_url` from `payments`.</Description>
+///   <Parameter name="$return_url" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $return_url.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$session_jti" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $session_jti.
+///   </Parameter>
+///   <ReturnType type="Result<mixed, string>" />
+/// </Function>
 export function square_connect_url($return_url: string, $shop_id: string, $session_jti: string): Result<mixed, string>
+
+/// docid: phpx/payments/square_handle_callback()
+/// <Function name="square_handle_callback">
+///   <Description>PHPX standard module function `square_handle_callback` from `payments`.</Description>
+///   <Parameter name="$query" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $query.
+///   </Parameter>
+///   <Parameter name="$expected_shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_shop_id.
+///   </Parameter>
+///   <Parameter name="$expected_jti" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $expected_jti.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<ConnectedAccount, string>" />
+/// </Function>
 export function square_handle_callback($query: mixed, $expected_shop_id: string, $expected_jti: string, $http: mixed): Result<ConnectedAccount, string>
+
+/// docid: phpx/payments/square_create_charge()
+/// <Function name="square_create_charge">
+///   <Description>PHPX standard module function `square_create_charge` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$access_token" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $access_token.
+///   </Parameter>
+///   <Parameter name="$source_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $source_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$currency" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $currency.
+///   </Parameter>
+///   <Parameter name="$platform_fee_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $platform_fee_cents.
+///   </Parameter>
+///   <Parameter name="$idempotency_key" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $idempotency_key.
+///   </Parameter>
+///   <Parameter name="$location_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $location_id.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<Charge, string>" />
+/// </Function>
 export function square_create_charge($account: ConnectedAccount, $access_token: string, $source_id: string, $amount_cents: int, $currency: string, $platform_fee_cents: int, $idempotency_key: string, $location_id: string, $http: mixed): Result<Charge, string>
+
+/// docid: phpx/payments/square_refund()
+/// <Function name="square_refund">
+///   <Description>PHPX standard module function `square_refund` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$access_token" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $access_token.
+///   </Parameter>
+///   <Parameter name="$charge_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $charge_id.
+///   </Parameter>
+///   <Parameter name="$amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $amount_cents.
+///   </Parameter>
+///   <Parameter name="$currency" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $currency.
+///   </Parameter>
+///   <Parameter name="$actor" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $actor.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$reason" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $reason.
+///   </Parameter>
+///   <Parameter name="$charge_amount_cents" type="int" required="true" typeLink="/docs/php/types/int">
+///     Parameter $charge_amount_cents.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<Refund, string>" />
+/// </Function>
 export function square_refund($account: ConnectedAccount, $access_token: string, $charge_id: string, $amount_cents: int, $currency: string, $actor: mixed, $shop_id: string, $reason: string, $charge_amount_cents: int, $http: mixed): Result<Refund, string>
+
+/// docid: phpx/payments/square_webhook_verify()
+/// <Function name="square_webhook_verify">
+///   <Description>PHPX standard module function `square_webhook_verify` from `payments`.</Description>
+///   <Parameter name="$body" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $body.
+///   </Parameter>
+///   <Parameter name="$signature" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $signature.
+///   </Parameter>
+///   <Parameter name="$secret" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $secret.
+///   </Parameter>
+///   <Parameter name="$notification_url" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $notification_url.
+///   </Parameter>
+///   <ReturnType type="Result<Event, string>" />
+/// </Function>
 export function square_webhook_verify($body: string, $signature: string, $secret: string, $notification_url: string): Result<Event, string>
+
+/// docid: phpx/payments/square_account_status()
+/// <Function name="square_account_status">
+///   <Description>PHPX standard module function `square_account_status` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$access_token" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $access_token.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<AccountStatus, string>" />
+/// </Function>
 export function square_account_status($account: ConnectedAccount, $access_token: string, $http: mixed): Result<AccountStatus, string>
+
+/// docid: phpx/payments/square_refresh_token()
+/// <Function name="square_refresh_token">
+///   <Description>PHPX standard module function `square_refresh_token` from `payments`.</Description>
+///   <Parameter name="$refresh_token" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $refresh_token.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<mixed, string>" />
+/// </Function>
 export function square_refresh_token($refresh_token: string, $http: mixed): Result<mixed, string>
+
+/// docid: phpx/payments/square_disconnect()
+/// <Function name="square_disconnect">
+///   <Description>PHPX standard module function `square_disconnect` from `payments`.</Description>
+///   <Parameter name="$account" type="ConnectedAccount" required="true">
+///     Parameter $account.
+///   </Parameter>
+///   <Parameter name="$access_token" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $access_token.
+///   </Parameter>
+///   <Parameter name="$http" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $http.
+///   </Parameter>
+///   <ReturnType type="Result<mixed, string>" />
+/// </Function>
 export function square_disconnect($account: ConnectedAccount, $access_token: string, $http: mixed): Result<mixed, string>
 
 // Token vault (issue #119).
+
+/// docid: phpx/payments/token_vault_encrypt()
+/// <Function name="token_vault_encrypt">
+///   <Description>PHPX standard module function `token_vault_encrypt` from `payments`.</Description>
+///   <Parameter name="$plaintext" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $plaintext.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$keyid" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $keyid.
+///   </Parameter>
+///   <Parameter name="$key_override" type="mixed" required="true" typeLink="/docs/php/types/mixed">
+///     Parameter $key_override.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function token_vault_encrypt($plaintext: string, $shop_id: string, $keyid: string, $key_override: mixed): Result<string, string>
+
+/// docid: phpx/payments/token_vault_decrypt()
+/// <Function name="token_vault_decrypt">
+///   <Description>PHPX standard module function `token_vault_decrypt` from `payments`.</Description>
+///   <Parameter name="$blob" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $blob.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function token_vault_decrypt($blob: string, $shop_id: string): Result<string, string>
+
+/// docid: phpx/payments/token_vault_reencrypt()
+/// <Function name="token_vault_reencrypt">
+///   <Description>PHPX standard module function `token_vault_reencrypt` from `payments`.</Description>
+///   <Parameter name="$blob" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $blob.
+///   </Parameter>
+///   <Parameter name="$shop_id" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $shop_id.
+///   </Parameter>
+///   <Parameter name="$target_keyid" type="string" required="true" typeLink="/docs/php/types/string">
+///     Parameter $target_keyid.
+///   </Parameter>
+///   <ReturnType type="Result<string, string>" />
+/// </Function>
 export function token_vault_reencrypt($blob: string, $shop_id: string, $target_keyid: string): Result<string, string>
